@@ -2,6 +2,9 @@ import React from "react";
 import { auth } from "../../../../auth";
 import { redirect } from "next/navigation";
 import Sidebar from "@/components/common/Sidebar";
+import CardComponent from "@/components/card";
+import BreadCrumb from "@/components/common/BreadCrumb";
+import BreadCrumbProfile from "@/components/header/BreadCrumbProfile";
 
 export default async function todoPage() {
   const session = await auth();
@@ -10,16 +13,18 @@ export default async function todoPage() {
     redirect("/login");
   }
   if (!session?.payload.token) {
-    console.log("hello");
     redirect("/login");
   }
   return (
     <>
-      <section className="grid grid-cols-12">
-        <div className="col-span-3">
-          <Sidebar />
+      <section className="p-2">
+        <BreadCrumbProfile />
+        <div>header</div>
+        <div className=" grid grid-cols-3 gap-3">
+          <CardComponent />
+          <CardComponent />
+          <CardComponent />
         </div>
-        <div className="col-span-9">2</div>
       </section>
     </>
   );
