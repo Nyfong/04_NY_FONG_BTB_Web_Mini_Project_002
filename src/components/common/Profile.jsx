@@ -1,6 +1,9 @@
 import React from "react";
+import { getCurrentUser } from "../../../service/profile-service";
 
-export default function Profile() {
+export default async function Profile() {
+  const user = await getCurrentUser();
+  console.log("----------user", user);
   return (
     <div>
       {/* notification */}
@@ -8,7 +11,11 @@ export default function Profile() {
         <figure className="relative flex flex-col-reverse rounded-lg p-2 ">
           <figcaption className="flex items-center space-x-4">
             <img
-              src="https://images.unsplash.com/photo-1632910121591-29e2484c0259?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NzEyNjZ8MHwxfHNlYXJjaHw4fHxjb2RlcnxlbnwwfDB8fHwxNzEwMTY0NjIzfDA&ixlib=rb-4.0.3&q=80&w=1080"
+              src={
+                user?.profile
+                  ? user.profile
+                  : "https://img.freepik.com/free-photo/anime-eyes-illustration_23-2151660535.jpg"
+              }
               alt=""
               className="flex-none w-14 h-14 rounded-full object-cover"
               loading="lazy"
@@ -16,9 +23,11 @@ export default function Profile() {
             />
             <div className="flex-auto">
               <div className="text-base text-slate-900 font-semibold dark:text-slate-200">
-                Kdet
+                {user?.username ? user.username : "a"}
               </div>
-              <div className="mt-0.5 dark:text-slate-300">Kdet@gmail.com</div>
+              <div className="mt-0.5 dark:text-slate-300">
+                {user?.email ? user.email : "Kdet@gmail.com"}
+              </div>
             </div>
           </figcaption>
         </figure>

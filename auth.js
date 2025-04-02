@@ -27,12 +27,6 @@ export const { auth, signIn, signOut, handlers } = NextAuth({
       console.log("auth js:", token);
       return token.token.user;
     },
-    // async redirect({url, baseUrl}) {
-    //   console.log('url', url);
-    //   console.log('baseUrl', baseUrl);
-
-    //   return url.startsWith(baseUrl) ? url : baseUrl + '/protected/client';
-    // }
   },
   strategy: "jwt",
   pages: {

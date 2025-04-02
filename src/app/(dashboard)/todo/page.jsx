@@ -1,7 +1,6 @@
 import React from "react";
 import { auth } from "../../../../auth";
 import { redirect } from "next/navigation";
-import Sidebar from "@/components/common/Sidebar";
 import CardComponent from "@/components/card";
 import BreadCrumbProfile from "@/components/header/BreadCrumbProfile";
 import { AlertDemo } from "@/components/common/Alert";
@@ -41,15 +40,8 @@ export default async function todoPage() {
             <CardComponent />
           </div>
         </div>
-        {/* {session?.status == "OK" ? (
-          <div className="absolute top-10 right-5">
-            <AlertDemo />
-          </div>
-        ) : (
-          ""
-        )} */}
         {/* Use the client-side AlertHandler */}
-        <div className="absolute top-10 right-5">
+        <div className="absolute bottom-10 right-5">
           <AlertDemo status={session?.status} message={session?.message} />
         </div>
       </section>

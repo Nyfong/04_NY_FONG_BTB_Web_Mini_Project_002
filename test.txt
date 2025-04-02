@@ -115,3 +115,25 @@
                       clipRule="evenodd"
                     />
                   </svg> */}
+
+
+
+
+
+
+
+                   {/* not started */}
+          <div className="flex flex-col gap-2 h-screen scrollbar-hidden  overflow-y-scroll pb-[200px]">
+            <CardComponent />
+            <CardComponent />
+            <CardComponent />
+          </div>
+          {/* in progress */}
+          <div className="flex flex-col gap-2 h-screen scrollbar-hidden  overflow-y-scroll pb-[200px]">
+            <CardComponent />
+            <CardComponent />
+          </div>
+          {/* finished */}
+          <div className="flex flex-col gap-2 h-screen scrollbar-hidden  overflow-y-scroll pb-[200px]">
+            <CardComponent />
+          </div>

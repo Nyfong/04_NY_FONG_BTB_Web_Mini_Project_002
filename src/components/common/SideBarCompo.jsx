@@ -1,6 +1,8 @@
 import React from "react";
 import Logo from "../logo";
 import { DialogCloseButton, DialogDemo } from "../popup/Dialog";
+import { SheetDemo } from "../workspace/setting-select";
+import Link from "next/link";
 
 export default function SideBarCompo({ data }) {
   //console.log("this is data in sidecompo", data);
@@ -17,9 +19,8 @@ export default function SideBarCompo({ data }) {
           <nav className="flex flex-col gap-1 min-w-[240px]  font-sans text-base font-normal text-gray-700">
             {listWorkSpace.map((el) => (
               <div className="grid grid-cols-6" key={el?.workspaceId}>
-                <div
-                  role="button"
-                  tabIndex={0}
+                <Link
+                  href={`/todo/${el.workspaceId}`}
                   className="col-span-5 flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-gray-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none"
                 >
                   <div className="grid place-items-center mr-4">
@@ -38,7 +39,7 @@ export default function SideBarCompo({ data }) {
                     </svg>
                   </div>
                   {el.workspaceName}
-                </div>
+                </Link>
                 {/* setting */}
                 <div className="flex items-center justify-end">
                   {/* <svg
@@ -54,7 +55,8 @@ export default function SideBarCompo({ data }) {
                       clipRule="evenodd"
                     />
                   </svg> */}
-                  ...
+
+                  <SheetDemo deleteId={el.workspaceId} />
                 </div>
               </div>
             ))}

@@ -13,7 +13,7 @@ export function AlertDemo({ status, message }) {
       setFadeOut(false);
 
       const fadeTimer = setTimeout(() => setFadeOut(true), 2000); // Start fade-out after 2s
-      const hideTimer = setTimeout(() => setVisible(false), 3000); // Hide after 3s
+      const hideTimer = setTimeout(() => setVisible(false), 4000); // Hide after 3s
 
       return () => {
         clearTimeout(fadeTimer);
@@ -26,8 +26,8 @@ export function AlertDemo({ status, message }) {
 
   return (
     <Alert
-      className={`bg-green-400 border-0 text-white transition-opacity transform duration-1000 ease-in-out ${
-        fadeOut ? "opacity-0 scale-98" : "opacity-100 scale-100"
+      className={`w-[500px] bg-green-600 border-0 text-white transition-opacity transform duration-2000 ease-in-out ${
+        fadeOut ? "opacity-0 " : "opacity-100 "
       }`}
     >
       <Terminal className="h-4 w-4" />

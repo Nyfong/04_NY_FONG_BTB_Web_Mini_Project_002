@@ -24,7 +24,7 @@ export default function FormWorkSpace() {
         </p>
         <div className="flex justify-end w-full ">
           <Button type="submit" className="bg-blue-500 text-white">
-            {isPending ? "Loading" : "Saves"}
+            {isPending ? "Loading" : "save"}
           </Button>
         </div>
       </form>

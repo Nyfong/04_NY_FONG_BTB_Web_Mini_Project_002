@@ -18,7 +18,7 @@ export function DialogDemo() {
         </DialogTrigger>
         <DialogContent className=" bg-white">
           <DialogHeader>
-            <DialogTitle>Edit profile</DialogTitle>
+            <DialogTitle>Add new workspace</DialogTitle>
             <DialogDescription className="pt-2">
               Add your workspace here. Click save when you're done.
             </DialogDescription>
