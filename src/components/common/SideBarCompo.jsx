@@ -60,7 +60,7 @@ export default function SideBarCompo({ data }) {
             ))}
           </nav>
           {/* logout */}
-          <div className="flex pb-10 items-end">
+          <div className="flex pb-2 items-end">
             <div
               role="button"
               tabIndex={0}

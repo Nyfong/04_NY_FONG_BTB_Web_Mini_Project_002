@@ -1,9 +1,9 @@
 import { NextResponse } from "next/server";
-import { auth } from "./auth";
+import { auth } from "../auth";
 
 export async function middleware(req) {
   const session = await auth();
-  console.log("aaaaaaaaaa", session);
+  //console.log("aaaaaaaaaa", session);
   if (!session?.payload.token) {
     return NextResponse.redirect(new URL("/login", req.url));
   }
