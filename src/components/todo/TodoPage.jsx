@@ -4,13 +4,14 @@ import { redirect } from "next/navigation";
 import CardComponent from "@/components/card";
 import BreadCrumbProfile from "@/components/header/BreadCrumbProfile";
 import { AlertDemo } from "@/components/common/Alert";
+import { AddTask } from "../task/AddTask";
 
 export default async function TodoPage({ tasks, workSpaceById }) {
   const taskList = [...tasks];
   //console.log("ooooo ", taskList);
   return (
     <>
-      <section className="p-2 overflow-hidden h-screen ">
+      <section className="p-2 overflow-hidden h-screen  bg-gray-50">
         <BreadCrumbProfile workSpaceById={workSpaceById} />
         <div className="grid grid-cols-3 gap-2 text-sm">
           <p
@@ -53,6 +54,9 @@ export default async function TodoPage({ tasks, workSpaceById }) {
             />
           </div>
         </div>
+        <span className=" absolute bottom-10 right-20  rounded-xl text-white">
+          <AddTask workSpaceById={workSpaceById} />
+        </span>
       </section>
     </>
   );

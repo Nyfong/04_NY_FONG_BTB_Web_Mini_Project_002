@@ -2,6 +2,8 @@ import "../../app/globals.css";
 import SideBarServer from "@/components/common/SideBarServer";
 import { auth } from "../../../auth";
 import { AlertDemo } from "@/components/common/Alert";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 export default async function AuthenticationLayout({ children }) {
   const session = await auth();
   return (
@@ -14,9 +16,10 @@ export default async function AuthenticationLayout({ children }) {
           <div className="col-span-9">{children}</div>
         </section>
         {/* Use the client-side AlertHandler */}
-        <div className="absolute bottom-10 right-5">
+        {/* <div className="absolute bottom-10 right-5">
           <AlertDemo status={session?.status} message={session?.message} />
-        </div>
+        </div> */}
+        <ToastContainer />
       </body>
     </html>
   );

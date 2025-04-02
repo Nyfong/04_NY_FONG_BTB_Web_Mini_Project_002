@@ -23,7 +23,7 @@ export default function CardComponent({ taskList, workSpaceById }) {
         : data?.map((el) => (
             <div
               key={el.taskId}
-              className="border border-gray-300 rounded-xl mt-8 h-fit"
+              className="border border-gray-300 bg-white shadow-md rounded-xl mt-8 h-fit"
             >
               <div>
                 <div className="p-5">
@@ -73,7 +73,7 @@ export default function CardComponent({ taskList, workSpaceById }) {
                   </Select>
 
                   {/* date */}
-                  <p className="flex gap-3 text-light-steel-blue text-sm">
+                  <p className="flex gap-3 text-light-steel-blue text-sm flex items-center gap-3 p-2">
                     <Clock size={22} />
                     {el.endDate
                       ? new Date(el.endDate).toLocaleDateString("en-US", {

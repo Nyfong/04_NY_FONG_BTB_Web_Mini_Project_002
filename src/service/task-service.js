@@ -16,3 +16,29 @@ export async function getAlltask(workSpaceId) {
   const res = await req.json();
   return res.payload;
 }
+
+export async function postTask(
+  workSpaceId,
+  taskTitle,
+  taskDetails,
+  tag,
+  status,
+  endDate
+) {
+  const session = await auth();
+  const req = await fetch(`${BASE_API_URL}/tasks/workspace/${workSpaceId}`, {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${session?.payload.token}`,
+    },
+    body: JSON.stringify({
+      taskTitle: taskTitle,
+      taskDetails: taskDetails,
+      tag: tag,
+      status: status,
+      endDate: endDate,
+    }),
+  });
+  const res = await req.json();
+  return res.payload;
+}
