@@ -24,15 +24,6 @@ export function DialogDemo() {
             </DialogDescription>
           </DialogHeader>
           <div className="grid gap-4 py-2">
-            {/* <form
-              className="grid grid-cols-4 items-center gap-4"
-              action={workSpaceAction}
-            >
-              <Label htmlFor="name" name="workspaceName" className="text-right">
-                Name
-              </Label>
-              <Input id="name" name="taskName" className="col-span-3" />
-            </form> */}
             <FormWorkSpace />
           </div>
         </DialogContent>

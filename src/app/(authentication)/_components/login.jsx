@@ -5,7 +5,7 @@ import { Label } from "@/components/ui/label";
 import { KeyRound, Mail } from "lucide-react";
 import Link from "next/link";
 import React from "react";
-import { loginAction } from "../../../../actions/login-action";
+import { loginAction } from "../../../actions/login-action";
 import { useActionState } from "react";
 
 export default function LoginComponent() {

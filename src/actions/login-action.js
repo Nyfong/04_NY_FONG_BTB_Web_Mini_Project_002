@@ -1,7 +1,7 @@
 "use server";
 
 import { error } from "console";
-import { signIn } from "../auth";
+import { signIn } from "../../auth";
 import { redirect } from "next/navigation";
 import { loginService } from "../service/auth-service";
 

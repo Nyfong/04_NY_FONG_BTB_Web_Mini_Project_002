@@ -1,4 +1,4 @@
-import { auth } from "../auth";
+import { auth } from "../../auth";
 import { BASE_API_URL } from "../constants/base-url";
 export async function getCurrentUser() {
   const session = await auth();

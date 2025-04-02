@@ -6,8 +6,8 @@ import { KeyRound, Mail, UserRound } from "lucide-react";
 import Link from "next/link";
 import React from "react";
 import { useActionState } from "react";
-import { signUpService } from "../../../../service/auth-service";
-import { signUpAction } from "../../../../actions/signup-action";
+import { signUpService } from "../../../service/auth-service";
+import { signUpAction } from "../../../actions/signup-action";
 
 export default function RegisterComponent() {
   const [state, formAction, isPending] = useActionState(signUpAction);

@@ -1,6 +1,6 @@
 import NextAuth from "next-auth";
 import Credentials from "next-auth/providers/credentials";
-import { loginService } from "./service/auth-service";
+import { loginService } from "./src/service/auth-service";
 import { redirect } from "next/dist/server/api-utils";
 
 export const { auth, signIn, signOut, handlers } = NextAuth({

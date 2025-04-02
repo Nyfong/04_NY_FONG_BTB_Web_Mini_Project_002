@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { workSpaceAction } from "../../../actions/workspace-action";
+import { workSpaceAction } from "../../actions/workspace-action";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";

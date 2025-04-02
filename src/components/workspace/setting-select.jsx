@@ -12,7 +12,8 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { ButtonDelete } from "./ButtonDelete";
-
+import { editWorkSpaceById } from "@/service/workspace-service";
+import { EditWorkSpaceAction } from "@/actions/workspace-action";
 export function SheetDemo({ deleteId, item }) {
   console.log("boombastic", item);
   return (
@@ -25,7 +26,7 @@ export function SheetDemo({ deleteId, item }) {
       <SheetContent className="bg-white p-2">
         <SheetHeader>
           <SheetTitle className="font-thin">
-            Edit <span className="font-bold">"{item?.workspaceName}"</span>{" "}
+            Edit <span className="font-bold">"{item?.workspaceName}" </span>{" "}
             workspace{" "}
           </SheetTitle>
           {/* <SheetTitle>{deleteId} </SheetTitle> */}
@@ -34,23 +35,25 @@ export function SheetDemo({ deleteId, item }) {
             Make changes to your profile here. Click save when you're done.
           </SheetDescription>
         </SheetHeader>
-        <div className="grid gap-4 px-2 py-4">
-          <div className="grid grid-cols-4 items-center gap-4">
+        <form className="grid gap-4 p-2 py-4" action={EditWorkSpaceAction}>
+          <div className="grid grid-cols-1 items-center gap-4">
             <Label htmlFor="name" className="text-right">
               Name
             </Label>
-            <Input id="name" className="col-span-3" />
+            <Input id="name" name="name" className="col-span-3" />
+            {/* Hidden Input for workspaceId */}
+            <input
+              type="hidden"
+              id="workspaceId"
+              name="workspaceId"
+              value={item?.workspaceId} // Automatically includes the workspaceId in the form data
+            />
           </div>
-          <div className="grid grid-cols-4 items-center gap-4">
-            <Label htmlFor="username" className="text-right">
-              Username
-            </Label>
-            <Input id="username" className="col-span-3" />
-          </div>
-          <div className="">
+
+          <div className="hidden">
             <ButtonDelete deleteId={deleteId} />
           </div>
-        </div>
+        </form>
 
         <SheetFooter>
           <SheetClose asChild>

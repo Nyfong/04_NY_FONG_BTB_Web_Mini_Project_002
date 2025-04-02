@@ -1,5 +1,5 @@
 import React from "react";
-import { getCurrentUser } from "../../../service/profile-service";
+import { getCurrentUser } from "../../service/profile-service";
 
 export default async function Profile() {
   const user = await getCurrentUser();
