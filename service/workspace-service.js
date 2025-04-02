@@ -56,3 +56,18 @@ export async function deleteWorkSpace(workspaceName) {
   //console.log("res============", res);
   return res.payload;
 }
+
+//by id
+
+export async function getWorkSpaceById(workSpaceId) {
+  const session = await auth();
+
+  const req = await fetch(`${BASE_API_URL}/workspace/${workSpaceId}`, {
+    method: "GET",
+    headers: {
+      Authorization: `Bearer ${session?.payload.token}`,
+    },
+  });
+  const res = await req.json();
+  return res.payload;
+}

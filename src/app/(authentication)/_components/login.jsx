@@ -11,6 +11,7 @@ import { useActionState } from "react";
 export default function LoginComponent() {
   const [state, formAction, isPending] = useActionState(loginAction, null);
   console.log(isPending, "sdfsdf");
+  console.log(state);
   return (
     <form className="space-y-6 bg-white" action={formAction}>
       {/* email */}
@@ -30,6 +31,10 @@ export default function LoginComponent() {
         />
         {state?.errorEmail && (
           <span className="text-red-400">{state.errorEmail}</span>
+        )}
+
+        {state?.message && (
+          <span className="text-red-400">{state?.message}</span>
         )}
       </div>
 

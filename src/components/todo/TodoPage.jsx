@@ -5,15 +5,14 @@ import CardComponent from "@/components/card";
 import BreadCrumbProfile from "@/components/header/BreadCrumbProfile";
 import { AlertDemo } from "@/components/common/Alert";
 
-export default async function TodoPage({ tasks }) {
-  const session = await auth();
-  //console.log("task in ---------++++++", tasks);
+export default async function TodoPage({ tasks, workSpaceById }) {
   const taskList = [...tasks];
+  //console.log("ooooo ", taskList);
   return (
     <>
-      <section className="p-2 overflow-hidden h-screen relative">
-        <BreadCrumbProfile />
-        <div className="grid grid-cols-3 gap-2">
+      <section className="p-2 overflow-hidden h-screen ">
+        <BreadCrumbProfile workSpaceById={workSpaceById} />
+        <div className="grid grid-cols-3 gap-2 text-sm">
           <p
             className={`border-b-2 border-watermelon-red text-watermelon-red `}
           >
@@ -26,11 +25,12 @@ export default async function TodoPage({ tasks }) {
             FINISHED
           </p>
         </div>
-        <div className=" grid grid-cols-3 gap-3  ">
+        <div className=" grid grid-cols-3 gap-3 text-sm ">
           <div className="scrollbar-hidden h-screen overflow-y-scroll pb-50">
             {/* NOT_STARTED */}
             <CardComponent
-              taskList={taskList.filter(
+              workSpaceById={workSpaceById}
+              taskList={taskList?.filter(
                 (task) => task.status === "NOT_STARTED"
               )}
             />
@@ -38,7 +38,8 @@ export default async function TodoPage({ tasks }) {
           <div className="scrollbar-hidden h-screen overflow-y-scroll pb-50">
             {/* in progres */}
             <CardComponent
-              taskList={taskList.filter(
+              workSpaceById={workSpaceById}
+              taskList={taskList?.filter(
                 (task) => task.status === "IN_PROGRESS"
               )}
             />
@@ -47,13 +48,10 @@ export default async function TodoPage({ tasks }) {
           <div className="scrollbar-hidden h-screen overflow-y-scroll pb-50">
             {/* FINISHED */}
             <CardComponent
-              taskList={taskList.filter((task) => task.status === "FINISHED")}
+              workSpaceById={workSpaceById}
+              taskList={taskList?.filter((task) => task.status === "FINISHED")}
             />
           </div>
-        </div>
-        {/* Use the client-side AlertHandler */}
-        <div className="absolute bottom-10 right-5">
-          <AlertDemo status={session?.status} message={session?.message} />
         </div>
       </section>
     </>

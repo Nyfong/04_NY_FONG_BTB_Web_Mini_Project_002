@@ -13,7 +13,8 @@ import {
 } from "@/components/ui/sheet";
 import { ButtonDelete } from "./ButtonDelete";
 
-export function SheetDemo({ deleteId }) {
+export function SheetDemo({ deleteId, item }) {
+  console.log("boombastic", item);
   return (
     <Sheet>
       <SheetTrigger asChild>
@@ -21,16 +22,19 @@ export function SheetDemo({ deleteId }) {
           ...
         </Button>
       </SheetTrigger>
-      <SheetContent className="bg-white p-3">
+      <SheetContent className="bg-white p-2">
         <SheetHeader>
-          <SheetTitle>Edit profile </SheetTitle>
-          <SheetTitle>{deleteId} </SheetTitle>
+          <SheetTitle className="font-thin">
+            Edit <span className="font-bold">"{item?.workspaceName}"</span>{" "}
+            workspace{" "}
+          </SheetTitle>
+          {/* <SheetTitle>{deleteId} </SheetTitle> */}
 
           <SheetDescription>
             Make changes to your profile here. Click save when you're done.
           </SheetDescription>
         </SheetHeader>
-        <div className="grid gap-4 py-4">
+        <div className="grid gap-4 px-2 py-4">
           <div className="grid grid-cols-4 items-center gap-4">
             <Label htmlFor="name" className="text-right">
               Name

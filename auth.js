@@ -13,6 +13,9 @@ export const { auth, signIn, signOut, handlers } = NextAuth({
       authorize: async (credentials) => {
         const { email, password } = credentials;
         const res = await loginService({ email, password });
+        if (res?.status !== "OK") {
+          return null;
+        }
         return res;
       },
     }),
@@ -22,9 +25,7 @@ export const { auth, signIn, signOut, handlers } = NextAuth({
       return token;
     },
     async session(props) {
-      //   return props;
       const { token } = props;
-      console.log("auth js:", token);
       return token.token.user;
     },
   },

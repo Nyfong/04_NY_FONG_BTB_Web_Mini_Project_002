@@ -3,6 +3,7 @@
 import { error } from "console";
 import { signIn } from "../auth";
 import { redirect } from "next/navigation";
+import { loginService } from "../service/auth-service";
 
 export const loginAction = async (_, formData) => {
   const email = formData.get("email");
@@ -14,11 +15,21 @@ export const loginAction = async (_, formData) => {
       errorEmail: "Email is required",
     };
   }
-  await signIn("credentials", {
-    email,
-    password,
-    redirect: false,
-  });
+
+  const res = await loginService({ email, password });
+  if (res?.status != "OK") {
+    return res;
+  }
+
+  try {
+    await signIn("credentials", {
+      email,
+      password,
+      redirect: false,
+    });
+  } catch (e) {
+    redirect("/login");
+  }
 
   redirect("/todo");
 };
