@@ -1,6 +1,7 @@
 import React from "react";
 import { CalendarIcon } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+
 import { Button } from "@/components/ui/button";
 import {
   HoverCard,
@@ -8,7 +9,7 @@ import {
   HoverCardTrigger,
 } from "@/components/ui/hover-card";
 import { PopupDelete } from "./PopupDelete";
-import PopupUpdate from "./PopupUpdate";
+import { PopupUpdate } from "./PopupUpdate";
 
 export function HoverSettingTask({ taskId, workSpaceById, taskTitle }) {
   return (

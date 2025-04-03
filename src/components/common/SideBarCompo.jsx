@@ -4,16 +4,34 @@ import { DialogCloseButton, DialogDemo } from "../popup/Dialog";
 import { SheetDemo } from "../workspace/setting-select";
 import Link from "next/link";
 import { signOut } from "../../../auth";
+
+const WORKSPACE_COLORS = [
+  "bg-blue-400",
+  "bg-green-400",
+  "bg-purple-400",
+  "bg-pink-400",
+  "bg-yellow-400",
+  "bg-indigo-400",
+  "bg-teal-400",
+  "bg-orange-400",
+  "bg-red-400",
+];
 export default function SideBarCompo({ data }) {
   const listWorkSpace = [...data];
-  //console.log("&&&&&&&&&&&&&&&&&", signOut);
+
+  // Get consistent color based on workspace ID
+  const getWorkspaceColor = (workspaceId) => {
+    const hash = workspaceId
+      .split("")
+      .reduce((acc, char) => acc + char.charCodeAt(0), 0);
+    return WORKSPACE_COLORS[hash % WORKSPACE_COLORS.length];
+  };
   return (
     <div>
       <div className="relative flex flex-col bg-clip-border rounded-xl bg-white text-gray-700 h-[calc(100vh)] w-full  p-4 shadow-xl shadow-blue-gray-900/5">
         <div className="mb-2 p-4">
           <Logo />
         </div>
-
         <div className="grid grid-cols-1 p-2 h-full ">
           {/* loop */}
           <div className="h-[300px] rounded-lg overflow-hidden shadow-md flex flex-col gap-5 ">
@@ -31,19 +49,13 @@ export default function SideBarCompo({ data }) {
                       className="col-span-5 flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-gray-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none"
                     >
                       <div className="grid place-items-center mr-4">
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          viewBox="0 0 24 24"
-                          fill="currentColor"
-                          aria-hidden="true"
-                          className="h-5 w-5"
-                        >
-                          <path
-                            fillRule="evenodd"
-                            d="M6.912 3a3 3 0 00-2.868 2.118l-2.411 7.838a3 3 0 00-.133.882V18a3 3 0 003 3h15a3 3 0 003-3v-4.162c0-.299-.045-.596-.133-.882l-2.412-7.838A3 3 0 0017.088 3H6.912zm13.823 9.75l-2.213-7.191A1.5 1.5 0 0017.088 4.5H6.912a1.5 1.5 0 00-1.434 1.059L3.265 12.75H6.11a3 3 0 012.684 1.658l.256.513a1.5 1.5 0 001.342.829h3.218a1.5 1.5 0 001.342-.83l.256-.512a3 3 0 012.684-1.658h2.844z"
-                            clipRule="evenodd"
-                          />
-                        </svg>
+                        <div className="flex items-center mr-3">
+                          <span
+                            className={`${getWorkspaceColor(
+                              el.workspaceId
+                            )} h-2.5 w-2.5 rounded-full`}
+                          ></span>
+                        </div>
                       </div>
                       {el.workspaceName}
                     </Link>
@@ -69,7 +81,7 @@ export default function SideBarCompo({ data }) {
                 <button
                   type="submit"
                   tabIndex={0}
-                  className="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-blue-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none"
+                  className="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-red-500 hover:bg-opacity-80 focus:bg-red-50 focus:bg-opacity-80 active:bg-blue-50 active:bg-opacity-80 hover:text-white focus:text-blue-900 active:text-white outline-none"
                 >
                   <div className="grid place-items-center mr-4">
                     <svg
