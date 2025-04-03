@@ -1,5 +1,4 @@
-const { METHODS } = require("http");
-const { headers } = require("next/headers");
+import { revalidatePath } from "next/cache";
 const { auth } = require("../../auth");
 import { BASE_API_URL } from "../constants/base-url";
 //get
@@ -16,6 +15,7 @@ export async function getWorkSpace() {
     }
   );
   const res = await req.json();
+
   return res.payload;
 }
 //post
@@ -35,6 +35,7 @@ export async function postWorkSpace(workspaceName) {
   });
   const res = await req.json();
   //console.log("res============", res);
+  revalidatePath(`/todo`);
   return res.payload;
 }
 
@@ -89,6 +90,7 @@ export async function editWorkSpaceById(workspaceName, workSpaceId) {
     if (!res.payload) {
       throw new Error("Response payload is missing.");
     }
+    revalidatePath(`/todo`);
     return res.payload;
   } catch (error) {
     // Log the error and rethrow it for further handling

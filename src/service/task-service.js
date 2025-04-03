@@ -42,31 +42,9 @@ export async function postTask(
   const res = await req.json();
 
   // Revalidate the path where tasks are displayed
-  revalidatePath(`/workspace/${workspaceId}`);
+  revalidatePath(`/todo/${workspaceId}`);
   return res.payload;
 }
-
-//not implement
-
-// export async function statusTask(workspaceId, taskId, statusBar) {
-//   const session = await auth();
-//   const req = await fetch(`${BASE_API_URL}/task/workspace/${workspaceId}`, {
-//     method: "POST",
-//     headers: {
-//       Authorization: `Bearer ${session?.payload.token}`,
-//       "Content-Type": "application/json",
-//     },
-//     body: JSON.stringify({
-//       status: statusBar,
-//     }),
-//   });
-//   const res = await req.json();
-
-//   // Revalidate the path where tasks are displayed
-//   revalidatePath(`/workspace/${workspaceId}`);
-//   return res.payload;
-// }
-
 //delete
 //http://96.9.81.187:8080/api/v1/task/{taskid}/workspace/{workspaceId}
 
@@ -83,7 +61,7 @@ export async function deleteTask(workspaceId, taskId) {
     }
   );
   const res = await req.json();
-  revalidatePath(`/workspace/${workspaceId}`);
+  revalidatePath(`/todo/${workspaceId}`);
   return res.payload;
 }
 
@@ -103,6 +81,6 @@ export async function patchTask(workspaceId, taskId, status) {
   const res = await req.json();
 
   // Revalidate the path where tasks are displayed
-  revalidatePath(`/workspace/${workspaceId}`);
+  revalidatePath(`/todo/${workspaceId}`);
   return res.payload;
 }
