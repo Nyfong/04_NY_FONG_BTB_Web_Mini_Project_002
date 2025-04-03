@@ -2,6 +2,7 @@ const { METHODS } = require("http");
 const { headers } = require("next/headers");
 const { auth } = require("../../auth");
 import { BASE_API_URL } from "../constants/base-url";
+//get
 export async function getWorkSpace() {
   const session = await auth();
 
