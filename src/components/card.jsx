@@ -18,6 +18,12 @@ export default function CardComponent({ taskList, workSpaceById }) {
   }
   const data = [...taskList];
   const color = ["bg-watermelon-red", "bg-blue-200", "bg-green-500"];
+  const bordercolor = [
+    "border-watermelon-red",
+    "border-blue-200",
+    "border-green-500",
+  ];
+  const textcolor = ["text-watermelon-red", "text-blue-200", "text-green-500"];
   return (
     <div>
       {data == null
@@ -69,6 +75,21 @@ export default function CardComponent({ taskList, workSpaceById }) {
                   <StatusTask
                     taskId={el?.taskId}
                     workSpaceById={workSpaceById}
+                    status={el.status}
+                    color={
+                      el.status === "NOT_STARTED"
+                        ? bordercolor[0]
+                        : el.status === "IN_PROGRESS"
+                        ? bordercolor[1]
+                        : bordercolor[2]
+                    }
+                    textcolor={
+                      el.status === "NOT_STARTED"
+                        ? textcolor[0]
+                        : el.status === "IN_PROGRESS"
+                        ? textcolor[1]
+                        : textcolor[2]
+                    }
                   />
                   {/* date */}
                   <p className="flex gap-3 text-light-steel-blue text-sm flex items-center gap-3 p-2">

@@ -19,7 +19,7 @@ export default function SideBarCompo({ data }) {
           <div className="h-[300px] rounded-lg overflow-hidden shadow-md flex flex-col gap-5 ">
             {/* details post task*/}
             <div className="flex items-center justify-between px-4">
-              <p>my task</p>
+              <p>my workspace</p>
               <DialogDemo />
             </div>
             <div className="scrollbar-hidden h-full overflow-y-scroll">

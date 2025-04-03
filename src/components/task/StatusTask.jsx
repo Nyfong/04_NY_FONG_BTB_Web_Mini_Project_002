@@ -9,18 +9,26 @@ import {
 } from "@/components/ui/select";
 import { patchTaskAction } from "@/actions/task-action";
 
-export default function StatusTask({ taskId, workSpaceById }) {
+export default function StatusTask({
+  taskId,
+  workSpaceById,
+  status,
+  color,
+  textcolor,
+}) {
   // Handle the change event when a new status is selected
   const handleStatusChange = async (selectedStatus) => {
-    // Call the patchTaskAction with the required parameters directly
-    await patchTaskAction(taskId, workSpaceById, selectedStatus);
+    //with the required parameters directly
+    await patchTaskAction(taskId, workSpaceById?.workspaceId, selectedStatus);
   };
 
   return (
     <div>
       <Select onValueChange={handleStatusChange}>
-        <SelectTrigger className="w-36 truncate border-watermelon-red text-watermelon-red">
-          <SelectValue placeholder="NOT_STARTED" />
+        <SelectTrigger
+          className={`w-36 truncate  text-watermelon-red  ${color}  ${textcolor}`}
+        >
+          <SelectValue placeholder={`${status}`} />
         </SelectTrigger>
         <SelectContent className="bg-white border-0">
           <SelectItem value="NOT_STARTED">NOT_STARTED</SelectItem>
