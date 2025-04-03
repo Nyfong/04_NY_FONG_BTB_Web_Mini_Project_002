@@ -2,6 +2,7 @@ import "../../app/globals.css";
 import SideBarServer from "@/components/common/SideBarServer";
 import { auth } from "../../../auth";
 import { AlertDemo } from "@/components/common/Alert";
+import toast, { Toaster } from "react-hot-toast";
 
 export default async function AuthenticationLayout({ children }) {
   const session = await auth();
@@ -18,6 +19,7 @@ export default async function AuthenticationLayout({ children }) {
         {/* <div className="absolute bottom-10 right-5">
           <AlertDemo status={session?.status} message={session?.message} />
         </div> */}
+        <Toaster />
       </body>
     </html>
   );

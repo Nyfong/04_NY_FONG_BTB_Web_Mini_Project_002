@@ -8,6 +8,7 @@ import {
 } from "@/components/ui/select";
 import { Clock, Ellipsis } from "lucide-react";
 import React from "react";
+import { DropdownMenuDemo } from "./task/Dropdown";
 
 export default function CardComponent({ taskList, workSpaceById }) {
   console.log("wo eh eh", workSpaceById);
@@ -31,7 +32,8 @@ export default function CardComponent({ taskList, workSpaceById }) {
                     <h2 className="text-xl font-bold capitalize">
                       {el.taskTitle ? el.taskTitle : "HRD Design"}
                     </h2>
-                    <Ellipsis />
+                    {/* <Ellipsis /> */}
+                    <DropdownMenuDemo />
                   </div>
 
                   {/* task detials */}

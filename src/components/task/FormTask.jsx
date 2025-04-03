@@ -7,9 +7,14 @@ import { Textarea } from "@/components/ui/textarea";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { taskAction } from "@/actions/task-action";
+import { useActionState } from "react";
+import toast from "react-hot-toast";
+
 export default function FormTask({ Id }) {
   //   console.log("id-------------", Id);
   const [selectedTag, setSelectedTag] = useState(""); // State to track the selected tag
+  //notifu
+  const notify = () => toast("Here is your toast.");
 
   const handleTagChange = (value) => {
     setSelectedTag(value); // Update the state when the selection changes
@@ -38,7 +43,13 @@ export default function FormTask({ Id }) {
           <Label htmlFor="username" className="text-right">
             date
           </Label>
-          <Input id="username" name="endDate" className="col-span-3" />
+          {/* <Input id="username" name="endDate" className="col-span-3" /> */}
+          <input
+            type="date"
+            className="border-1 p-2 rounded-lg"
+            id="birthday"
+            name="endDate"
+          />
           {/* <div className="w-full">
             <DatePickerDemo />
           </div> */}
