@@ -18,8 +18,10 @@ export const loginService = async ({ email, password }) => {
   return data;
 };
 
+//http://96.9.81.187:8080/api/v1/auth/register
+
 export const signUpService = async ({ username, email, password }) => {
-  const res = await fetch(`${BASE_API_URL}/auth/register`, {
+  const res = await fetch(`http://96.9.81.187:8080/api/v1/auth/register`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -31,7 +33,7 @@ export const signUpService = async ({ username, email, password }) => {
     }),
   });
   const data = await res.json();
-  if (!data) {
+  if (data) {
     redirect("/login");
   }
   return data;

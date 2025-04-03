@@ -10,7 +10,7 @@ import { signUpService } from "../../../service/auth-service";
 import { signUpAction } from "../../../actions/signup-action";
 
 export default function RegisterComponent() {
-  const [state, formAction, isPending] = useActionState(signUpAction);
+  const [state, formAction, isPending] = useActionState(signUpAction, null);
   return (
     <form className="space-y-6" action={formAction}>
       {/* username */}
@@ -32,7 +32,6 @@ export default function RegisterComponent() {
       {state?.errorName && (
         <span className="text-red-400 ">{state.errorName}</span>
       )}
-
       {/* email */}
       <div>
         <Label
@@ -52,7 +51,6 @@ export default function RegisterComponent() {
       {state?.errorEmail && (
         <span className="text-red-400">{state.errorEmail}</span>
       )}
-
       {/* password */}
       <div>
         <Label
@@ -72,7 +70,10 @@ export default function RegisterComponent() {
       </div>
 
       {/* sign in button */}
-      <Button className="text-base cursor-pointer bg-persian-green text-white py-2.5 rounded-lg w-full font-bold">
+      <Button
+        type="submit"
+        className="text-base cursor-pointer bg-persian-green text-white py-2.5 rounded-lg w-full font-bold"
+      >
         {isPending ? "Laoding" : "Sign Up"}{" "}
       </Button>
 

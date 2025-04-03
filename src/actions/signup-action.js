@@ -9,7 +9,7 @@ export const signUpAction = async (_, formData) => {
   const username = formData.get("name");
   const email = formData.get("email");
   const password = formData.get("password");
-  console.log(email, password);
+  console.log(email, password, username);
   if (!password && !email && !username) {
     return {
       error: "password is required",
@@ -17,6 +17,6 @@ export const signUpAction = async (_, formData) => {
       errorName: "username is required",
     };
   }
-  const res = await signUpService(username, email, password);
+  const res = await signUpService({ username, email, password });
   return res;
 };

@@ -9,7 +9,6 @@ export default function RegisterPage() {
           Sign In to Plan<span className="text-watermelon-red">I</span>t{" "}
         </h1>
         <RegisterComponent />
-
         {/* copyright */}
         <p className="text-center text-light-steel-blue">
           &copy; Copyright | 2025 Monster

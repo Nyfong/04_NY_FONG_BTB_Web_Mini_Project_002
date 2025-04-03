@@ -1,5 +1,6 @@
 import { postTask } from "@/service/task-service";
-
+import { deleteTask } from "@/service/task-service";
+import { patchTask } from "@/service/task-service";
 export const taskAction = async (formData) => {
   const taskTitle = formData.get("taskTitle");
   const taskDetails = formData.get("taskDetails");
@@ -15,11 +16,24 @@ export const taskAction = async (formData) => {
     endDate,
     workspaceId
   );
-  // if (!wo) {
-  //   return {
-  //     error: "workspace is required",
-  //   };
-  // }
 
   await postTask(workspaceId, taskTitle, taskDetails, tag, endDate);
+};
+
+//DELETE task
+
+export const deleteTaskAction = async (formData) => {
+  const taskId = formData.get("taskId");
+  const workspaceId = formData.get("workspaceId");
+  await deleteTask(workspaceId, taskId);
+};
+
+// PATCH task
+
+export const patchTaskAction = async (taskId, workspaceId, status) => {
+  // const taskId = formData.get("taskId");
+  // const workspaceId = formData.get("workspaceId");
+  // const status = formData.get("status");
+  console.log("**88888888888***********", taskId, workspaceId, status);
+  await patchTask(workspaceId, taskId, status);
 };

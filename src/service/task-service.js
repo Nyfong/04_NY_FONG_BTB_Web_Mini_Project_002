@@ -41,3 +41,57 @@ export async function postTask(
   const res = await req.json();
   return res.payload;
 }
+
+//not implement
+
+export async function statusTask(workspaceId, taskId, statusBar) {
+  const session = await auth();
+  const req = await fetch(`${BASE_API_URL}/task/workspace/${workspaceId}`, {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${session?.payload.token}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      status: statusBar,
+    }),
+  });
+  const res = await req.json();
+  return res.payload;
+}
+
+//delete
+//http://96.9.81.187:8080/api/v1/task/{taskid}/workspace/{workspaceId}
+
+export async function deleteTask(workspaceId, taskId) {
+  const session = await auth();
+  const req = await fetch(
+    `${BASE_API_URL}/task/${taskId}/workspace/${workspaceId}`,
+    {
+      method: "DELETE",
+      headers: {
+        Authorization: `Bearer ${session?.payload.token}`,
+        "Content-Type": "application/json",
+      },
+    }
+  );
+  const res = await req.json();
+  return res.payload;
+}
+
+//patch status
+export async function patchTask(workspaceId, taskId, status) {
+  const session = await auth();
+  const req = await fetch(
+    `${BASE_API_URL}/task/${taskId}/workspace/${workspaceId}/status?status=${status}`,
+    {
+      method: "PATCH",
+      headers: {
+        Authorization: `Bearer ${session?.payload.token}`,
+        "Content-Type": "application/json",
+      },
+    }
+  );
+  const res = await req.json();
+  return res.payload;
+}

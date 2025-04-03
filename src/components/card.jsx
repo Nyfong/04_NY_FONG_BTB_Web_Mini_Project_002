@@ -8,10 +8,11 @@ import {
 } from "@/components/ui/select";
 import { Clock, Ellipsis } from "lucide-react";
 import React from "react";
-import { DropdownMenuDemo } from "./task/Dropdown";
+import { HoverSettingTask } from "./task/HoverSettingTask";
+import StatusTask from "./task/StatusTask";
 
 export default function CardComponent({ taskList, workSpaceById }) {
-  console.log("wo eh eh", workSpaceById);
+  //console.log("wo eh eh", workSpaceById);
   if (taskList == null) {
     return <p>nothting</p>;
   }
@@ -33,7 +34,11 @@ export default function CardComponent({ taskList, workSpaceById }) {
                       {el.taskTitle ? el.taskTitle : "HRD Design"}
                     </h2>
                     {/* <Ellipsis /> */}
-                    <DropdownMenuDemo />
+                    <HoverSettingTask
+                      taskId={el?.taskId}
+                      taskTitle={el?.taskTitle}
+                      workSpaceById={workSpaceById}
+                    />
                   </div>
 
                   {/* task detials */}
@@ -61,19 +66,10 @@ export default function CardComponent({ taskList, workSpaceById }) {
                 </div>
                 {/* progress */}
                 <div className="flex justify-between items-center border-t border-t-gray-300 p-5">
-                  <Select>
-                    <SelectTrigger
-                      className={`w-36 truncate border-watermelon-red text-watermelon-red`}
-                    >
-                      <SelectValue placeholder={"NOT_STARTED"} />
-                    </SelectTrigger>
-                    <SelectContent className="bg-white border-0">
-                      <SelectItem value="NOT_STARTED">NOT_STARTED</SelectItem>
-                      <SelectItem value="IN_PROGRESS">IN_PROGRESS</SelectItem>
-                      <SelectItem value="FINISHED">FINISHED</SelectItem>
-                    </SelectContent>
-                  </Select>
-
+                  <StatusTask
+                    taskId={el?.taskId}
+                    workSpaceById={workSpaceById}
+                  />
                   {/* date */}
                   <p className="flex gap-3 text-light-steel-blue text-sm flex items-center gap-3 p-2">
                     <Clock size={22} />
