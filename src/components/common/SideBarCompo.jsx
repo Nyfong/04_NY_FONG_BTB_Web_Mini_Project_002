@@ -70,7 +70,7 @@ export default function SideBarCompo({ data }) {
             </div>
           </div>
           {/* loop */}
-          <div className="h-[200px] rounded-lg overflow-hidden shadow-md flex flex-col gap-5 ">
+          <div className=" h-[200px] rounded-lg overflow-hidden shadow-md flex flex-col gap-5 ">
             {/* details post task*/}
             <div className="flex items-center justify-between px-4">
               <p>Favorite</p>

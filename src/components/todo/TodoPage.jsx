@@ -13,11 +13,11 @@ export default async function TodoPage({ tasks, workSpaceById }) {
       <section className="p-2 overflow-hidden h-screen  bg-gray-50">
         <BreadCrumbProfile workSpaceById={workSpaceById} />
         {/* show where am at */}
-        <FavoriteStar workSpaceById={workSpaceById} />
-        {/* <div className=" flex  justify-between gap-2  mb-5  ">
+
+        <div className=" flex  justify-between gap-2  mb-5  ">
           <p className="text-xl font-bold">{workSpaceById?.workspaceName}</p>
-          <Star />
-        </div> */}
+          <FavoriteStar workSpaceById={workSpaceById} />
+        </div>
         {/* progress */}
         <div className="grid grid-cols-3 gap-2 text-sm">
           <p
