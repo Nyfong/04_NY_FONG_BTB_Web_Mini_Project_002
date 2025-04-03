@@ -4,18 +4,20 @@ import BreadCrumbProfile from "@/components/header/BreadCrumbProfile";
 import { AlertDemo } from "@/components/common/Alert";
 import { AddTask } from "../task/AddTask";
 import { Star } from "lucide-react";
+import FavoriteStar from "./SetStar";
 export default async function TodoPage({ tasks, workSpaceById }) {
   const taskList = [...tasks];
-  //console.log("ooooo ", taskList);
+
   return (
     <>
       <section className="p-2 overflow-hidden h-screen  bg-gray-50">
         <BreadCrumbProfile workSpaceById={workSpaceById} />
         {/* show where am at */}
-        <div className=" flex  justify-between gap-2  mb-5  ">
+        <FavoriteStar workSpaceById={workSpaceById} />
+        {/* <div className=" flex  justify-between gap-2  mb-5  ">
           <p className="text-xl font-bold">{workSpaceById?.workspaceName}</p>
           <Star />
-        </div>
+        </div> */}
         {/* progress */}
         <div className="grid grid-cols-3 gap-2 text-sm">
           <p

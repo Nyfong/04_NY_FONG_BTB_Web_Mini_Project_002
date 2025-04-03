@@ -1,6 +1,11 @@
 "use server";
 
-import { editWorkSpaceById, postWorkSpace } from "../service/workspace-service";
+import {
+  editWorkSpaceById,
+  postWorkSpace,
+  patchWorkSpaceById,
+} from "../service/workspace-service";
+
 export const workSpaceAction = async (_, formData) => {
   const workspaceName = formData.get("workspacename");
   //console.log("-------------- workspace", workspaceName);
@@ -24,4 +29,9 @@ export const EditWorkSpaceAction = async (formData) => {
   }
 
   await editWorkSpaceById(workspaceName, workspaceId);
+};
+
+export const PatchWorkSpaceAction = async (workSpaceId, isFavorite) => {
+  console.log("%%%%%%%%%%%%%%%%%%%%%", workSpaceId, isFavorite);
+  await patchWorkSpaceById(workSpaceId, isFavorite);
 };

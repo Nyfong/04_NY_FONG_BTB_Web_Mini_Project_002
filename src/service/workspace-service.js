@@ -98,3 +98,24 @@ export async function editWorkSpaceById(workspaceName, workSpaceId) {
     throw error; // Rethrow to allow the caller to handle the error
   }
 }
+
+//patch
+
+//url http://96.9.81.187:8080/api/v1/workspace/558ddd2a-121d-4db0-b758-b7f42a87f077/favorite?favorite=true
+export async function patchWorkSpaceById(workSpaceId, isFavorite) {
+  const session = await auth();
+  const req = await fetch(
+    `${BASE_API_URL}/workspace/${workSpaceId}/favorite?favorite=${isFavorite}`,
+    {
+      method: "PATCH",
+      headers: {
+        Authorization: `Bearer ${session?.payload.token}`,
+      },
+    }
+  );
+  const res = await req.json();
+
+  // Revalidate the path where tasks are displayed
+  revalidatePath(`/todo`);
+  return res.payload;
+}

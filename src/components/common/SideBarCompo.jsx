@@ -4,6 +4,7 @@ import { DialogCloseButton, DialogDemo } from "../popup/Dialog";
 import { SheetDemo } from "../workspace/setting-select";
 import Link from "next/link";
 import { signOut } from "../../../auth";
+import { Star } from "lucide-react";
 
 const WORKSPACE_COLORS = [
   "bg-blue-400",
@@ -65,6 +66,43 @@ export default function SideBarCompo({ data }) {
                     </div>
                   </div>
                 ))}
+              </nav>
+            </div>
+          </div>
+          {/* loop */}
+          <div className="h-[200px] rounded-lg overflow-hidden shadow-md flex flex-col gap-5 ">
+            {/* details post task*/}
+            <div className="flex items-center justify-between px-4">
+              <p>Favorite</p>
+              <Star />
+            </div>
+            <div className="scrollbar-hidden h-full overflow-y-scroll">
+              <nav className="flex flex-col gap-1 text-xs  font-sans text-base font-normal  text-gray-700 ">
+                {listWorkSpace
+                  .filter((workspace) => workspace.isFavorite === true) // Only show favorites
+                  .map((el) => (
+                    <div className="grid grid-cols-6" key={el?.workspaceId}>
+                      <Link
+                        href={`/todo/${el.workspaceId}/?q=workspace`}
+                        className="col-span-5 flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-gray-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none"
+                      >
+                        <div className="grid place-items-center mr-4">
+                          <div className="flex items-center mr-3">
+                            <span
+                              className={`${getWorkspaceColor(
+                                el.workspaceId
+                              )} h-2.5 w-2.5 rounded-full`}
+                            ></span>
+                          </div>
+                        </div>
+                        {el.workspaceName}
+                      </Link>
+                      {/* setting */}
+                      <div className="flex items-center justify-end">
+                        <SheetDemo deleteId={el.workspaceId} item={el} />
+                      </div>
+                    </div>
+                  ))}
               </nav>
             </div>
           </div>
