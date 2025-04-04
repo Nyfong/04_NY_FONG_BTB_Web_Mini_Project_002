@@ -1,6 +1,6 @@
 import "../globals.css";
 import Logo from "@/components/logo";
-
+import Prividers from "../(dashboard)/provider";
 export const metadata = {
   title: {
     template: "%s | Monster",
@@ -16,7 +16,7 @@ export default function AuthenticationLayout({ children }) {
         <div className="container mx-auto my-12">
           <Logo />
         </div>
-        {children}
+        <Prividers>{children}</Prividers>
       </body>
     </html>
   );

@@ -32,6 +32,6 @@ export const EditWorkSpaceAction = async (formData) => {
 };
 
 export const PatchWorkSpaceAction = async (workSpaceId, isFavorite) => {
-  console.log("%%%%%%%%%%%%%%%%%%%%%", workSpaceId, isFavorite);
+  //console.log("%%%%%%%%%%%%%%%%%%%%%", workSpaceId, isFavorite);
   await patchWorkSpaceById(workSpaceId, isFavorite);
 };

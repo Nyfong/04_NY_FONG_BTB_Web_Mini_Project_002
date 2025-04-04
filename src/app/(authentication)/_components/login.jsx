@@ -4,14 +4,35 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { KeyRound, Mail } from "lucide-react";
 import Link from "next/link";
-import React from "react";
+import React, { useEffect } from "react";
 import { loginAction } from "../../../actions/login-action";
 import { useActionState } from "react";
-
+import { toast } from "react-hot-toast";
 export default function LoginComponent() {
   const [state, formAction, isPending] = useActionState(loginAction, null);
   console.log(isPending, "sdfsdf");
-  console.log(state);
+  console.log("6666666666", state);
+  // ✅ Show toast on successful login
+  // useEffect(() => {
+  //   if (state?.status === "OK") {
+  //     toast.success("Login successful!");
+  //     console.log(state?.message);
+  //     console.log(state?.status);
+  //   } else {
+  //     toast.error(state?.message || "Something went wrong!");
+  //     //console.log(state?.message);
+  //     console.log(state?.status);
+  //   }
+  // }, [state]);
+  useEffect(() => {
+    console.log("useEffect triggered", state);
+    if (state?.message === "You are authenticated!") {
+      toast.success("Login successful!");
+    } else if (state?.status) {
+      toast.error(state?.message || "Something went wrong!");
+    }
+  }, [state]);
+
   return (
     <form className="space-y-6 bg-white" action={formAction}>
       {/* email */}

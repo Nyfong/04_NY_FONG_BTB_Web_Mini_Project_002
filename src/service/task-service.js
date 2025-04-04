@@ -84,3 +84,37 @@ export async function patchTask(workspaceId, taskId, status) {
   revalidatePath(`/todo/${workspaceId}`);
   return res.payload;
 }
+
+//edit task
+
+export async function editTask(
+  workspaceId,
+  taskId,
+  taskTitle,
+  taskDetails,
+  tag,
+  endDate
+) {
+  const session = await auth();
+  const req = await fetch(
+    `${BASE_API_URL}/task/${taskId}/workspace/${workspaceId}`,
+    {
+      method: "PUT",
+      headers: {
+        Authorization: `Bearer ${session?.payload.token}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        taskTitle,
+        taskDetails,
+        tag,
+        endDate,
+      }),
+    }
+  );
+  const res = await req.json();
+
+  // Revalidate the path where tasks are displayed
+  revalidatePath(`/todo/${workspaceId}`);
+  return res.payload;
+}
