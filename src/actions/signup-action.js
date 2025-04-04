@@ -17,6 +17,7 @@ export const signUpAction = async (_, formData) => {
       errorName: "username is required",
     };
   }
+
   const res = await signUpService({ username, email, password });
   return res;
 };

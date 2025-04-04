@@ -33,8 +33,13 @@ export const signUpService = async ({ username, email, password }) => {
     }),
   });
   const data = await res.json();
-  if (data) {
+  console.log("999999999999", data);
+  if (data?.status === "CREATED") {
     redirect("/login");
   }
+  if (data?.status === "BAD_REQUEST") {
+    redirect("/register");
+  }
+
   return data;
 };

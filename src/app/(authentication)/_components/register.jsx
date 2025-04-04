@@ -4,13 +4,21 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { KeyRound, Mail, UserRound } from "lucide-react";
 import Link from "next/link";
-import React from "react";
+import React, { useEffect } from "react";
 import { useActionState } from "react";
 import { signUpService } from "../../../service/auth-service";
 import { signUpAction } from "../../../actions/signup-action";
-
+import { toast } from "react-hot-toast";
 export default function RegisterComponent() {
   const [state, formAction, isPending] = useActionState(signUpAction, null);
+  useEffect(() => {
+    console.log("useEffect triggered", state);
+    if (state?.message === "You are authenticated!") {
+      toast.success("Login successful!");
+    } else if (state?.status) {
+      toast.error(state?.message || "Something went wrong!");
+    }
+  }, [state]);
   return (
     <form className="space-y-6" action={formAction}>
       {/* username */}

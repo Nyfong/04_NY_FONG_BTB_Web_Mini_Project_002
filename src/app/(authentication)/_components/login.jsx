@@ -13,17 +13,7 @@ export default function LoginComponent() {
   console.log(isPending, "sdfsdf");
   console.log("6666666666", state);
   // ✅ Show toast on successful login
-  // useEffect(() => {
-  //   if (state?.status === "OK") {
-  //     toast.success("Login successful!");
-  //     console.log(state?.message);
-  //     console.log(state?.status);
-  //   } else {
-  //     toast.error(state?.message || "Something went wrong!");
-  //     //console.log(state?.message);
-  //     console.log(state?.status);
-  //   }
-  // }, [state]);
+
   useEffect(() => {
     console.log("useEffect triggered", state);
     if (state?.message === "You are authenticated!") {
