@@ -33,7 +33,7 @@ export const signUpService = async ({ username, email, password }) => {
     }),
   });
   const data = await res.json();
-  console.log("999999999999", data);
+  // console.log("999999999999", data);
   if (data?.status === "CREATED") {
     redirect("/login");
   }

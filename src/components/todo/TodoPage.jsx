@@ -5,13 +5,13 @@ import { AlertDemo } from "@/components/common/Alert";
 import { AddTask } from "../task/AddTask";
 import { Star } from "lucide-react";
 import FavoriteStar from "./SetStar";
-export default async function TodoPage({ tasks, workSpaceById }) {
+export default async function TodoPage({ tasks, workSpaceById, location }) {
   const taskList = [...tasks];
 
   return (
     <>
       <section className="p-2 overflow-hidden h-screen  bg-gray-50">
-        <BreadCrumbProfile workSpaceById={workSpaceById} />
+        <BreadCrumbProfile workSpaceById={workSpaceById} location={location} />
         {/* show where am at */}
 
         <div className=" flex  justify-between gap-2  mb-5  ">
